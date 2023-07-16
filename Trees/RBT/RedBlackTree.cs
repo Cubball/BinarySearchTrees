@@ -59,13 +59,13 @@ internal class RedBlackTree : ITree<RBTNode>
             throw new ArgumentOutOfRangeException($"Елемента зі значенням {value} немає в дереві");
         }
 
-        if (node.Left != null)
+        if (node.Left != _nil)
         {
-            return Maximum(node.Left);
+            return Maximum(node.Left!);
         }
 
         var parent = node.Parent;
-        while (parent != null && node == parent.Left)
+        while (parent != _nil && node == parent!.Left)
         {
             node = parent;
             parent = parent.Parent;
@@ -81,13 +81,13 @@ internal class RedBlackTree : ITree<RBTNode>
             throw new ArgumentOutOfRangeException($"Елемента зі значенням {value} немає в дереві");
         }
 
-        if (node.Right != null)
+        if (node.Right != _nil)
         {
-            return Minimum(node.Right);
+            return Minimum(node.Right!);
         }
 
         var parent = node.Parent;
-        while (parent != null && node == parent.Right)
+        while (parent != _nil && node == parent!.Right)
         {
             node = parent;
             parent = parent.Parent;
